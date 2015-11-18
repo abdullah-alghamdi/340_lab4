@@ -13,11 +13,13 @@ if mode==0
             disp('now they are almost equal')
            break
         end
-        
-       
-      
-        f=fn(theta0,l,pos)
-        
+        disp('old pos0')
+        pos0
+        f1 = l(1).*cos(theta0(1)) + l(2).*cos(theta0(1) + theta0(2)) -pos(1);
+        f2 = l(1).*sin(theta0(1)) + l(2).*sin(theta0(1) + theta0(2)) -pos(2);   
+        f=[f1;f2]
+        disp('new pos0')
+        f
         s = J\-f
         theta0 = theta0 + s'
         
@@ -47,10 +49,8 @@ if mode==1
         [pos0,J]=evalRobot2D(l,x);
         
         k = k+1;
-        if k==n
-            display(n,' iterations are done')
-            break
-        end
+        if k==n:
+            
     end
     theta = x;
 end
