@@ -1,0 +1,9 @@
+function [pos,J] = evalRobot3D(M,theta)
+    Rx1 = Rx(theta(1));
+    Ry = Ry(theta(2));
+    Rz = Rz(theta(3));
+    Rx4 = [1 0 0 0;0 cos(theta(4)) -sin(theta(4)) 0;0 sin(theta(4)) cos(theta(4)) 0; 0 0 0 1];
+    
+    pos = M(1)*Rz*Ry*Rx1*M(2)*Rx4*M(3)*[0 0 0 1]'
+   
+end
