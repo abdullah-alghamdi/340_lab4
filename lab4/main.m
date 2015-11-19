@@ -6,4 +6,3 @@ pos=[0.0;1.7320]';
 
 [theta]=invKin2D(l,theta1,pos,30, 0)
 
-

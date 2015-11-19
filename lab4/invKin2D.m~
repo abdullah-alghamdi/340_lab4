@@ -9,7 +9,7 @@ if mode==0
        
       
       
-        if abs(norm(pos -pos0)) < 0.00005
+        if an(norm(pos' -pos0) < [0.00005;0.00005]
             disp('now they are almost equal')
            break
         end
@@ -19,7 +19,7 @@ if mode==0
         f=fn(theta0,l,pos)
         
         s = J\-f
-        theta0 = theta0 + s
+        theta0 = theta0 + s'
         
         k = k+1;
     end
@@ -32,7 +32,7 @@ if mode==1
     [pos0,B]=evalRobot2D(l,theta0);
     while k<n
       
-        if abs(norm(pos -pos0)) < 0.00005
+        if abs(pos' -pos0) < [0.5*10^-6;0.5*10^-6]
             disp('now they are almost equal')
            break
         end
@@ -40,12 +40,11 @@ if mode==1
         
         fun=fn(theta0,l,pos);
         s = B\-fun;
-        x = theta0 + s
+        x = theta0 + s'
         y = fn(x,l,pos) - fn(theta0,l,pos);
         B = B + ((y - B*s)*s')/(s'*s);
         
         [pos0,J]=evalRobot2D(l,x);
-        theta0=x;
         
         k = k+1;
         if k==n
@@ -53,7 +52,7 @@ if mode==1
             break
         end
     end
-    theta = theta0;
+    theta = x;
 end
     
 
