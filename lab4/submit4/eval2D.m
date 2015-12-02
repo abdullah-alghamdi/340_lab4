@@ -16,7 +16,7 @@ while(1)
   plotRobot2D(ls,t,':');
   
   %Solve and display the position
-  t=invKin2D(ls,t,desired,30,1); 
+  t=invKin2D(ls,t,desired,20,0); 
   plotRobot2D(ls,t);
   hold off;
 end

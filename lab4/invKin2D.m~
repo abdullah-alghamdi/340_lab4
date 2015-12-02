@@ -1,10 +1,6 @@
-% Abdullah Alghamdi 
-% part1 Q3
-
-%Note: check function "fn"
 function [theta]=invKin2D(l,theta0,pos,n, mode) 
 
-% Newton's Method
+
 if mode==0
     k=0;
     while k<n
@@ -16,29 +12,29 @@ if mode==0
             disp('now they are almost equal')
            break
         end
+      
+        f=fn(theta0,l,pos)
         
-     % from Heath's book
-        f=fn(theta0,l,pos);
-        s = J\-f;
-        theta0 = theta0 + s;
+        s = J\-f
+        theta0 = theta0 + s
         
         k = k+1;
     end
     theta = theta0;
+
 end 
 
-% Broyden's method 
 if mode==1
     k=0;
     [pos0,B]=evalRobot2D(l,theta0);
     while k<n
-        
-        % check if we are close from the desired position
+      
         if abs(norm(pos -pos0)) < 0.00005
             disp('now they are almost equal')
            break
         end
-        % From Heath's book 
+        
+        
         fun=fn(theta0,l,pos);
         s = B\-fun;
         x = theta0 + s

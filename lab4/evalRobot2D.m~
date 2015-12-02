@@ -1,28 +1,21 @@
+% Abdullah Alghamdi 
+% part1 Q1
 function [pos,J]=evalRobot2D(l,theta)
 
 
 x = l(1).*cos(theta(1)) + l(2).*cos(theta(1) + theta(2));
 y = l(1).*sin(theta(1)) + l(2).*sin(theta(1) + theta(2));
 pos = [x;y];
+% return the position 
 
-syms a b c d;
-fn1 = c*cos(a) + d*cos(a+b);
-fn2 = c*sin(a) + d*sin(a+b);
-fn1da = diff(fn1,a);
-fn1db = diff(fn1,b);
-fn2da = diff(fn2,a);
-fn2db = diff(fn2,b);
-J(1,1) = subs(fn1da,{a,b,c,d});
-J(1,2) = subs(f1db,{a,b,c,d});
-J(2,1) = subs(f2da,{a,b,c,d});
-J(2,2) = subs(f2db,{a,b,c,d});
-% d3=-l(1).*sin(theta(1)) - l(2).*sin(theta(1) + theta(2));
-% d4= -l(2).*sin(theta(1) + theta(2));
-% 
-% dd3=l(1).*cos(theta(1)) + l(2).*cos(theta(1) + theta(2));
-% dd4=l(2).*cos(theta(1) + theta(2));
-% J =[d3,d4
-%     dd3,dd4];
 
+d3=-l(1).*sin(theta(1)) - l(2).*sin(theta(1) + theta(2));
+d4= -l(2).*sin(theta(1) + theta(2));
+
+dd3=l(1).*cos(theta(1)) + l(2).*cos(theta(1) + theta(2));
+dd4=l(2).*cos(theta(1) + theta(2));
+J =[d3,d4
+    dd3,dd4];
+% return 
 
 end 
